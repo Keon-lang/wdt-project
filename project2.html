@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Load jQuery from a CDN -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Project 2</title>
+</head>
+<link rel="stylesheet" href="project2.css">
+<style>
+  #about-us {
+      text-align: center; /* Centers content inside the section */
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 600px;
+      margin: 0 auto; /* Center the #about-us section itself */
+    }
+
+    #about-us h2 {
+      font-size: 35px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 25px;
+    }
+
+    /* Date Box Styling */
+    .date-box {
+      border: 2px solid #333;
+      padding: 10px;
+      margin-top: 10px;
+      display: inline-flex;
+      align-items: center;
+      border-radius: 8px;
+      background-color: #f0f0f0;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .date-box p {
+      margin: 0;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .calendar-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: center;
+    }
+
+    /* Button Styling */
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto; /* Ensure button is centered */
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    button:focus {
+      outline: none;
+    }
+  
+ .button {
+  background-color: #04AA6D; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition: background 0.3s ease; 
+}
+
+.button:hover {
+  background: linear-gradient(45deg, #04AA6D, #99ffbb);
+}
+
+.image-container {
+  text-align: center;
+  margin-bottom: 20px; 
+}
+
+.slideshow-image {
+  max-width: 700px;
+  height: auto;
+  border-radius: 10px;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.container {
+  max-width: 1000px; 
+  margin: 0 auto; 
+  padding: 20px; 
+}
+
+.box {
+  background-color: #f9f9f9; 
+  padding: 40px; 
+  margin: 20px 0; 
+  border: 1px solid #ccc; 
+  border-radius: 10px;
+}
+
+.about-us, .our-mission {
+  margin: 20px 0; 
+  padding: 30px; 
+}
+
+p {
+  font-size: 16px; 
+  line-height: 1.6; 
+  color: #333;
+}
+
+#tutors {
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+#tutors h2 {
+  font-size: 35px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:focus {
+  outline: none;
+}
+
+.team-member img {
+    width: 150px;  
+    height: 150px; 
+    border-radius: 50%; 
+    border: 3px solid #fff; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+	table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 80%;
+	  margin: 50px auto; 
+      border-collapse: collapse;
+}
+	
+    body {
+    background-color: rgb(175, 215, 187);
+}
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+      text-align: center;
+}
+	
+    table, th, td {
+    border: 1px solid black;
+}
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+}
+	
+    th {
+       text-align: center;
+       padding-top: 12px;
+       padding-bottom: 12px;
+       text-align: center;
+       background-color: lightblue;
+       color: rgb(16, 13, 13);
+}
+
+/* General button styling */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Primary button style */
+.btn-primary {
+    background-color: #007bff;  /* Blue color */
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;  /* Darker blue on hover */
+}
+
+/* Full-width button (btn-block) */
+.btn-block {
+    display: block;
+    width: 100%;
+    margin: 10px 0; /* Add some spacing around the button */
+}
+
+/* Responsive behavior: Adjust padding and font size on small screens */
+@media (max-width: 768px) {
+    .btn {
+        font-size: 14px;  /* Smaller text size for mobile */
+        padding: 8px 16px;  /* Smaller padding */
+    }
+}
+
+	
+    .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: lightblue;
+   color: rgb(16, 13, 13);
+   text-align: center;
+}
+
+ tr:hover {background-color: #ddd;}
+ 
+ input[type=text] {
+        width: 100%;
+        padding: 20px 20px;
+        margin: 10px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        background: none repeat scroll 0 0 #66A3D2;
+        border-color: #FFFFFF #327CB5 #327CB5 #FFFFFF;
+        border-radius: 10px;
+        border-style: solid;
+        border-width: 1px;
+        box-shadow: 1px 1px 3px #333333;
+        color: #FFFFFF;
+        cursor: pointer;
+        font-weight: bold;
+        padding: 10px 20px; 
+        font-size: 16px; 
+        text-align: center;
+        text-shadow: 1px 1px 1px #000000;
+    }
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+    div {
+        border-radius: 5px;
+        padding: 20px;
+    }
+
+        .minimal-button {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            background-color: #fff;
+            border: 2px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .minimal-button:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .minimal-button:active {
+            transform: scale(0.95);
+        }
+		
+</style>
+
+<body>
+    <h1 id="greeting"></h1> <!-- Placeholder for the greeting message -->
+
+    <script>
+        // Get the current hour
+        let hour = new Date().getHours();
+
+        // Determine the greeting based on the hour
+        let greeting;
+        if (hour < 12) {
+            greeting = "Good Morning!";
+        } else if (hour < 18) {
+            greeting = "Good Afternoon!";
+        } else {
+            greeting = "Good Evening!";
+        }
+
+        // Display the greeting in an alert and on the webpage
+        alert(greeting);
+        document.getElementById("greeting").textContent = greeting;
+    </script>
+</body>
+
+<script>
+    function validateForm() {
+        var fname = document.getElementById("fname").value;
+        let email = document.getElementById("email").value;
+        var subject = document.getElementById("subject").value; 
+        var message = document.getElementById("message").value; 
+
+        if (email === "") {
+        alert("Email is required.");
+        return false;
+    }
+
+         let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+    }
+
+    return true;
+}
+</script>
+<body>
+    <nav>
+    <div class="logo">
+        <img src="myet-logo.png" alt="Logo">
+    </div>
+    <ul class="nav-menu">
+        <li class="dropdown">
+            <a href="#">Menu</a>
+            <div class="dropdown-content">
+                <a href="#About Us">About Us</a>
+                <a href="#Tutors">Tutors</a>
+                <a href="#Courses">Courses</a>
+                <a href="#Contact Us">Contact Us</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+
+    <div class="container">
+  <!-- Box Container for About Us and Our Mission -->
+  <div class="box-container">
+
+ <!-- Date Box Section -->
+  <section style="text-align: center;">
+    <div class="date-box" style="display: inline-block; border: 2px solid #333; padding: 10px; margin-top: 10px; border-radius: 8px; background-color: #e6fff2;">
+      <p style="margin: 0; font-weight: bold; color: #333;">Current Date: <span id="currentDate"></span></p>
+      <div class="calendar-box" style="margin-top: 10px;">
+        <input type="date" id="calendar">
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById("currentDate").innerText = new Date().toLocaleDateString();
+  </script>
+
+  <!-- About Us Section -->
+  <section id="About Us">
+  <center>
+    <h2>About Us</h2>
+	</center>
+    <button onclick="greet()">Greet</button>
+  </section>
+
+  <script>
+    function greet() {
+      alert("Welcome to our About Us section!");
+    }
+  </script>
+
+  
+    <div class="image-container">
+  <img id="slideshow" src="images1.png" alt="Image 1" class="slideshow-image">
+</div>
+<script>
+let images = ["images1.png", "images2.jpg"];  // Array of images
+let index = 0;
+
+// Change image when the image is clicked
+document.getElementById("slideshow").addEventListener("click", nextSlide);
+
+function nextSlide() {
+    index = (index + 1) % images.length;  // Cycle through images
+    document.getElementById("slideshow").src = images[index];  // Change the image source
+}
+</script>
+
+<!-- About Us Box -->
+<div class="box about-us">
+<h2 style="text-align: center; font-size: 40px;">About Us</h2>
+  <p>
+    More than 15 years ago, we had a vision. We wanted to be the pioneer of the online learning platform in Malaysia.
+    Hence, here we are now, the pioneer in online learning that covers almost all subjects in the Malaysian syllabus.
+    Throughout the years, our company has worked closely together with many states bringing education closer to students
+    via the provision of back-end LMS engine for hosting online learning content for Primary 1 – 6 and Form 1 – 5,
+    powered by MyET LMS Digital Education Solutions.
+  </p>
+</div>
+
+<!-- Our Mission Box -->
+<div class="box our-mission">
+<h2 style="text-align: center; font-size: 40px;">Our Mission</h2>
+  <p>
+    We aim to provide online learning content to cater to the whole of our country.
+    Collaborating closely with MOE, it is our goal to enable all Malaysian students to access our portal,
+    at ANYTIME and ANYWHERE, be it in the cities or rural areas of Malaysia. In the fast-growing technology phase,
+    the internet will no longer be a jargon word even for rural students. Connecting them to online learning and allowing them to
+    enjoy its great advantages is a great mission for our team.
+  </p>
+</div>
+
+
+  
+    <div style="text-align: center;">
+       <a href="#top" style="display: block; margin-top: 20px;">
+       <a href="#top" class="button">Back to top</a>
+       </a>
+    </div>
+    </section>
+
+    <hr>
+
+    <!-- Tutors Section -->
+<!-- Tutors Section -->
+<section id="Tutors" style="text-align: center;">
+  <h2 style="font-size: 35px;">Tutors</h2>
+  <button onclick="greet()">Greet</button>
+</section>
+
+<script>
+  function greet() {
+    alert("Welcome to our Tutors section!");
+  }
+</script>
+
+
+  <section class="team">
+<center><h2>Information Of Tutors</h2></center>
+    <div class="box-container">
+      <!-- Box 1 -->
+      <div class="box">
+        <div class="team-member">
+<center>
+  <img src="tutor1.jpg" alt="Tutor 1">
+  <h3>Apatsara Chulakit</h3>
+  <br><br>
+  <h1>Teaching In All Subjects</h1>
+</center>
+		  <br><br>
+          <p>Passionate educator with over 5 years of experience in teaching various subjects, making complex topics easy to understand.</p>
+        </div>
+      </div>
+	  
+	  <body>
+
+    <!-- Button element with onclick event to trigger the showAlert function -->
+<button class="btn btn-primary btn-block" onclick="showAlert()">Click Me</button>
+
+<!-- JavaScript function for alert -->
+<script>
+    function showAlert() {
+        alert("Hello! Welcome To Our Website.");
+    }
+</script>
+
+
+</body>
+      
+      <!-- Box 2 -->
+      <div class="box">
+        <div class="team-member">
+<center>
+          <img src="tutor2.jpeg" alt="Tutor 2">
+          <h3>Khairul Anwar</h3>
+          <br><br>
+          <h1>Teaching In Mathematics, AddMath, Account</h1>
+</center>
+		  <br><br>
+          <p>Dedicated math tutor who specializes in helping students grasp difficult concepts with ease, using practical examples and a clear teaching style.</p>
+        </div>
+      </div>
+      
+	 <!-- Button element with onclick event to trigger the showAlert function -->
+<button class="btn btn-primary btn-block" onclick="showAlert()">Click Me</button>
+
+<!-- JavaScript function for alert -->
+<script>
+    function showAlert() {
+        alert("Hello! Welcome To Our Website.");
+    }
+</script>
+	
+      <!-- Box 3 -->
+      <div class="box">
+        <div class="team-member">
+		<center>
+          <img src="tutor3.jpeg" alt="Tutor 3">
+          <h3>Fairuz Shakilla</h3>
+          <br><br>
+          <h1>Teaching In English, Biology, Chemistry</h1>
+		  </center>
+		  <br><br>
+          <p>An experienced English tutor known for her engaging lessons, helping students improve their language skills through interactive learning techniques.</p>
+        </div>
+      </div>
+      
+	  <!-- Button element with onclick event to trigger the showAlert function -->
+<button class="btn btn-primary btn-block" onclick="showAlert()">Click Me</button>
+
+<!-- JavaScript function for alert -->
+<script>
+    function showAlert() {
+        alert("Hello! Welcome To Our Website.");
+    }
+</script>
+	
+  </section>
+
+  <br>
+
+  <center>
+  <a href="#top" style="display: block; margin-top: 20px;">
+    <a href="#top" class="button">Back to top</a>
+  </a>
+</center>
+
+</section>
+
+
+    <hr>
+
+    <!-- Courses Section -->
+	 <section id="Courses" style="text-align: center;">
+        <h2 style="font-size: 35px;">Courses</h2>
+		<button onclick="greet()">Greet</button>
+</section>
+
+<script>
+  function greet() {
+    alert("Welcome to our Courses section!");
+  }
+</script>
+
+   <br><br>
+   <table align="center">
+    <tr>
+      <th align="center">Schedule</th>
+      <th>2:30PM – 4:30PM</th>
+      <th>8PM – 10PM</th>
+    </tr>
+    <tr>
+      <td>Monday</td>
+      <td>Bahasa Melayu</td>
+      <td>AddMath</td>
+    </tr>
+    <tr>
+      <td>Tuesday</td>
+      <td>English</td>
+      <td>Physics</td>
+    </tr>
+    <tr>
+      <td>Wednesday</td>
+      <td>Mathematics</td>
+      <td>Biology</td>
+    </tr>
+    <tr>
+      <td>Thursday</td>
+      <td>History</td>
+      <td>Account</td>
+    </tr>
+    <tr>
+      <td>Friday</td>
+      <td>–</td>
+      <td>Chemistry</td>
+    </tr>
+    <tr>
+      <td>Saturday</td>
+      <td>Science</td>
+      <td>Geography</td>
+    </tr>
+    <tr>
+      <td>Sunday</td>
+      <td>Mandarin</td>
+      <td>–</td>
+    </tr>
+  </table><br><br>
+   
+    <div style="text-align: center;">
+       <a href="#top" style="display: block; margin-top: 20px;">
+       <a href="#top" class="button">Back to top</a>
+       </a>
+    </div>
+	
+    <hr>
+     
+    <!-- Contact Us Section -->
+    <section id="Contact Us" style="text-align: center;">
+        <h2 style="font-size: 35px;">Contact Us</h2>
+		  <button onclick="greet()">Greet</button>
+         </section>
+		 
+		 <script>
+  function greet() {
+    alert("Welcome to our Contact Us section!");
+  }
+</script>
+
+         <div>
+        <form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+         <div style="text-align: left;">
+            <label for="fname">Full Name :</label>
+            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+        </div>
+      
+          <div style="text-align: left;">
+            <label for="fname">Email Address :</label>
+            <input type="text" id="email" name="Email Address" placeholder="Your email..">
+        </div>
+		
+          <div style="text-align: left;">
+            <label for="fname">Subject :</label>
+            <input type="text" id="subject" name="Subject" placeholder="Your subject..">
+        </div>
+
+          <div style="text-align: left;">
+            <label for="fname">Message :</label>
+            <input type="text" id="message" name="Message" placeholder="Your message..">
+        </div>
+		
+		<center>
+          <input type="submit" value="Submit">
+		  </center>
+		  
+        </form>
+      </div>
+	  
+        <div style="text-align: center;">
+       <a href="#top" style="display: block; margin-top: 20px;">
+       <a href="#top" class="button">Back to top</a>
+       </a>
+    </div>
+		
+    </section>
+
+    <title>Footer</title>
+<body>
+    <hr>
+    <p style="text-align: center;">&copy; 2023 All right reserved by MyET Education Sdn Bhd.</p>
+</body>
+
+</body>
+</html>
